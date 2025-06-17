@@ -1,0 +1,29 @@
+<div class="publications-container">
+  <div class="publications-viewer">
+    <div class="display-pub-actions">
+      <button class="lang-btn-blue" [class.active]="currentPub === 'bachelor'" (click)="showBachelor()">Bachelor Thesis</button>
+      <button class="lang-btn-blue" [class.active]="currentPub === 'master'" (click)="showMaster()">Master Thesis</button>
+      <!--button class="lang-btn-blue" [class.active]="currentPub === 'other'" (click)="showOther()">Other Publications</button-->
+    </div>
+    <ng-container [ngSwitch]="currentPub">
+      <iframe
+        *ngSwitchCase="'bachelor'"
+        [src]="bachelorPubUrl | safe"
+        frameborder="0"
+        class="pub-iframe"
+      ></iframe>
+      <iframe
+        *ngSwitchCase="'master'"
+        [src]="masterPubUrl | safe"
+        frameborder="0"
+        class="pub-iframe"
+      ></iframe>
+      <div *ngSwitchCase="'other'" class="pub-list">
+        <div class="pub-list-item" *ngFor="let pub of otherPubs">
+          <span class="publication-title">{{ pub.title }}</span>
+          <a [href]="pub.url" target="_blank" class="publication-link">View PDF</a>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

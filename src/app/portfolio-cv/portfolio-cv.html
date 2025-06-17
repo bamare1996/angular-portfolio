@@ -1,0 +1,9 @@
+<div class="cv-container">
+  <div class="cv-viewer">
+    <div class="display-lang-actions">
+      <button class="lang-btn-blue" [class.active]="currentCv === 'en'" (click)="showEnglish()">English</button>
+      <button class="lang-btn-blue" [class.active]="currentCv === 'de'" (click)="showGerman()">Deutsch</button>
+    </div>
+    <iframe [src]="cvUrl | safe" frameborder="0"></iframe>
+  </div>
+</div>

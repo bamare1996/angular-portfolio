@@ -1,0 +1,36 @@
+<div class="certificates-container">
+  <div class="cert-viewer">
+    <div class="display-cert-actions">
+      <button class="lang-btn-blue" [class.active]="currentType === 'education'" (click)="showEducation()">Education</button>
+      <button class="lang-btn-blue" [class.active]="currentType === 'work'" (click)="showWork()">Work</button>
+    </div>
+    <ng-container [ngSwitch]="currentType">
+      <div *ngSwitchCase="'education'">
+        <div class="display-cert-actions">
+          <button class="lang-btn-blue" [class.active]="currentCert === 'bachelor'" (click)="showBachelor()">Bachelor</button>
+          <button class="lang-btn-blue" [class.active]="currentCert === 'master'" (click)="showMaster()">Master</button>
+          <button class="lang-btn-blue" [class.active]="currentCert === 'english'" (click)="showEnglish()">English</button>
+          <button class="lang-btn-blue" [class.active]="currentCert === 'german'" (click)="showGerman()">German</button>
+        </div>
+        <ng-container [ngSwitch]="currentCert">
+          <iframe *ngSwitchCase="'bachelor'" [src]="bachelorCertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+          <iframe *ngSwitchCase="'master'" [src]="masterCertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+          <iframe *ngSwitchCase="'english'" [src]="englishCertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+          <iframe *ngSwitchCase="'german'" [src]="germanCertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+        </ng-container>
+      </div>
+      <div *ngSwitchCase="'work'">
+        <div class="display-cert-actions">
+          <button class="lang-btn-blue" [class.active]="currentWorkCert === 'company1'" (click)="showWorkCert('company1')">Fricke Gruppe</button>
+          <button class="lang-btn-blue" [class.active]="currentWorkCert === 'company2'" (click)="showWorkCert('company2')">nördlicheDigitale GmbH</button>
+          <!-- Add more work cert buttons as needed -->
+        </div>
+        <ng-container [ngSwitch]="currentWorkCert">
+          <iframe *ngSwitchCase="'company1'" [src]="company1CertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+          <iframe *ngSwitchCase="'company2'" [src]="company2CertUrl | safe" frameborder="0" class="cert-iframe"></iframe>
+          <!-- Add more work cert iframes as needed -->
+        </ng-container>
+      </div>
+    </ng-container>
+  </div>
+</div>
