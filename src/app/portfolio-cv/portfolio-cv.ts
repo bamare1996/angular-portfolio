@@ -16,7 +16,7 @@ export class PortfolioCv {
   cvUrlGerman = 'assets/resume/german/AmareBirukLebenslauf.pdf';
   cvUrlEnglish = 'assets/resume/english/AmareBirukCV.pdf';
 
-  currentCv: 'de' | 'en' = 'de';
+  currentCv: 'de' | 'en' = 'en';
 
   get cvUrl() {
     return this.currentCv === 'de' ? this.cvUrlGerman : this.cvUrlEnglish;
