@@ -86,6 +86,12 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy"
+        },
+        "e2e": {
+          "builder": "@cypress/schematic:cypress",
+          "options": {
+            "devServerTarget": "angular-portfolio:serve"
+          }
         }
       }
     }
